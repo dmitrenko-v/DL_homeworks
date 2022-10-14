@@ -36,6 +36,7 @@ def mod_with_exp(a, b, m):
 
 
 def find_reverse(a, b, m):
+    res = []
     d = nsd(a, m)
     if b % d != 0:
         print("Нема рішень")
@@ -45,7 +46,13 @@ def find_reverse(a, b, m):
     else:
         m1 = int(m / d)
         x = (b * a**(euler_func(m1) - 1)) % m1
-        return [x, x + m1]
+        res.append(x)
+        d -= 1
+        while d:
+            res.append(x+m1)
+            x += m1
+            d -= 1
+        return res
 
 
 def generate_random_prime(A, B):
