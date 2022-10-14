@@ -76,7 +76,8 @@ while True:
         a = int(input("Введіть параметр a: "))
         b = int(input("Введіть параметр b: "))
         x = find_reverse(a, b, m)
-        print(f"x = {x}")
+        if x:
+            print(f"x = {x}")
     if choice == "4":
         a = int(input("Введіть параметр A: "))
         b = int(input("Введіть параметр B: "))
