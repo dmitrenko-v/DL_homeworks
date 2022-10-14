@@ -20,4 +20,4 @@
 <p>Для реалізаціі вибору випадкового числа з діапазону у п.5 була використана бібліотека random</p>
 Для реалізації п.4 скористався додатковими матеріалами [з вікіпедії](https://ru.wikipedia.org/wiki/%D0%A1%D1%80%D0%B0%D0%B2%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5_%D0%BF%D0%BE_%D0%BC%D0%BE%D0%B4%D1%83%D0%BB%D1%8E) 
 <p>У програмі є інтерфейс для користувача, за допомогою якого можна обрати модуль m, операцію з цим модулем та відповідні параметри для кожної операції</p>
-(/assets/images/interface_modulararithmetics.jpg)
+![interface image](/assets/images/interface_modulararithmetics.jpg)
