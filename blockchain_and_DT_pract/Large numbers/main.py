@@ -16,8 +16,10 @@ def gen_random_key(bits):
 
 
 n = 8
+random_keys = {}  # this variable is used to store data in format {N: random generated N-bit key}
 for j in range(10):
-    print(f"Randomly generated {n}-bit key:", gen_random_key(n))
+    random_keys[n] = gen_random_key(n)
+    print(f"Randomly generated {n}-bit key:", random_keys[n])
     n *= 2
 
 
@@ -33,4 +35,8 @@ def bruteforce(key):
           hex(start_value))
 
 
-bruteforce(gen_random_key(16))
+n = 8
+for i in range(10):
+    bruteforce(random_keys[n])
+    n *= 2
+
