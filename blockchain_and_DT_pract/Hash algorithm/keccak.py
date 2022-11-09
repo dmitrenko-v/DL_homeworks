@@ -10,6 +10,7 @@ w = 64
 r_shifts = [[0, 36, 3, 41, 18], [1, 44, 10, 45, 2], [62, 6, 43, 15, 61], [28, 55, 25, 21, 56], [27, 20, 39, 8, 14]]
 RC = np.zeros(24, dtype=object)
 
+
 RC[0] = 0x0000000000000001
 RC[1] = 0x0000000000008082
 RC[2] = 0x800000000000808A
@@ -88,23 +89,13 @@ def keccak(M):
         M = bitarray(bin(M)[2:])
         ml = len(M)
 
-    # Padding
-    if ml % r == 0:
-        M += bitarray("1")
-        for j in range(0, r-2):
-            M += bitarray("0")
-        M += bitarray("1")
-    else:
-        M += bitarray("1")
-        if len(M) % r == 0:
-            for j in range(0, r-1):
-                M += bitarray("0")
-            M += bitarray("1")
-        else:
-            while len(M) % r != 0:
-                M += bitarray("0")
-            M[-1] = 1
-
+    Mbytes = int(ml / 8)
+    if Mbytes < r/8:
+        M += bitarray("00000110") # 0x06
+        while len(M) < r:
+            M += bitarray("00000000")
+    M = M ^ (bitarray("0" * (r-8)) + bitarray("10000000"))
+    print(M)
     # Absorbing
     blocks = []
     for j in range(0, len(M), r):
@@ -119,6 +110,7 @@ def keccak(M):
             for y in range(5):
                 if x+5*y < r/w:
                     S[x][y] = S[x][y] ^ block_arr[x+5*y]
+        print(S)
         S = keccak_f(S)
 
     # Squeezing
@@ -132,3 +124,4 @@ def keccak(M):
     Z = Z[:256]
     print(f"Keccak(SHA3-256) hash of \'{M_copy}\' = {hex(ba2int(Z))[2:]}")
 
+keccak("")
