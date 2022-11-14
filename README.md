@@ -38,3 +38,7 @@
 
 ![interface image](/assets/images/interface_modulararithmetics.jpg)
 
+### Elliptic Curves
+<p>Для реалізаціі завдання була використана мова Python</p>
+<p>Для еліптичної кривої, на якій виконуються функції були обрані параметри а=2, b=3</p>
+
