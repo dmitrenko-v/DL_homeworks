@@ -23,6 +23,10 @@
 <p>Для реалізації була використана мова Python із допоміжними бібліотеками bitarray та numpy</p>
 <p>Були реалізовані такі алгоритми гешування: SHA1, SHA2-256, SHA3(Keccak)-256</p>
 
+### Cryptographic algorithms
+<p>Для реалізації була використана мова Python</p>
+<p>Були реалізовані такі алгоритми: Шифр Віженера, AES-128</p>
+
 ## Cryptography
 
 ### Modular arithmetics 
