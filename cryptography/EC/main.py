@@ -9,6 +9,10 @@ a = 2
 b = 3
 
 
+def BasePointGGet():
+    """This function returns base point of given elliptic curve"""
+    return ECpoint(3, 6)
+
 def ECPointGen(x: int, y: int):
     """This function generates point on elliptic curve with given x and y parameters"""
     return ECpoint(x, y)
@@ -16,7 +20,7 @@ def ECPointGen(x: int, y: int):
 
 def IsOnCurveCheck(point: ECpoint):
     """This function checks whether given point is on given elliptic curve"""
-    return point.y ** 3 == point.x**2 + a * point.x + b
+    return point.y ** 2 == point.x**3 + a * point.x + b
 
 
 def AddECPoints(a1: ECpoint, b1: ECpoint):
@@ -29,8 +33,8 @@ def AddECPoints(a1: ECpoint, b1: ECpoint):
 
 def DoubleECPoints(point: ECpoint):
     """This function adds point on elliptic curve to itself and return result as point on elliptic curve"""
-    l = ((3*(point.x**2) + a) / 2*point.y)**2
-    xr = l - 2*point.y
+    l = (3*(point.x**2) + a) / (2*point.y)
+    xr = l**2 - 2*point.x
     yr = l * (point.x - xr) - point.y
     return ECpoint(xr, yr)
 
@@ -61,10 +65,7 @@ def PrintECPoint(point: ECpoint):
 
 
 # Tests
-p = ECPointGen(4, 3)
-p2 = ECPointGen(-6, 3)
-p_plus_p2 = AddECPoints(p, p2)
-PrintECPoint(p_plus_p2)
+p = ECPointGen(3, 6)
 print(IsOnCurveCheck(p))
 double_p = DoubleECPoints(p)
 scalar_p = ScalarMult(p, 3)
