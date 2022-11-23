@@ -42,15 +42,13 @@ def DoubleECPoints(point: ECpoint):
 def ScalarMult(point: ECpoint, k: int):
     """This function defines scalar multiplication on group and returns result of k * point"""
     point_copy = point
-    cnt = 1
-    while k:
-        if k - cnt >= 0:
-            point = DoubleECPoints(point)
-            cnt *= 2
-            k -= cnt
-        else:
+    if k == 1:
+        return point
+    else:
+        point = DoubleECPoints(point)
+        k -= 1
+        for j in range(k - 1):
             point = AddECPoints(point, point_copy)
-            k -= 1
     return point
 
 
@@ -65,10 +63,11 @@ def PrintECPoint(point: ECpoint):
 
 
 # Tests
-p = ECPointGen(3, 6)
-print(IsOnCurveCheck(p))
-double_p = DoubleECPoints(p)
-scalar_p = ScalarMult(p, 3)
-PrintECPoint(scalar_p)
-p_str = ECPointToString(double_p)
-PrintECPoint(double_p)
+if __name__ == "__main__":
+    p = ECPointGen(3, 6)
+    print(IsOnCurveCheck(p))
+    double_p = DoubleECPoints(p)
+    scalar_p = ScalarMult(p, 4)
+    PrintECPoint(scalar_p)
+    p_str = ECPointToString(double_p)
+    PrintECPoint(double_p)
