@@ -118,8 +118,10 @@ def sha2hash(msg):
         h3 = (h3 + d) & 0xffffffff
         h4 = (h4 + e) & 0xffffffff
         h5 = (h5 + f) & 0xffffffff
-        h6 = (h6 + e) & 0xffffffff
-        h7 = (h7 + g) & 0xffffffff
+        h6 = (h6 + g) & 0xffffffff
+        h7 = (h7 + h) & 0xffffffff
 
     hash = (h0 << 224) | (h1 << 192) | (h2 << 160) | (h3 << 128) | (h4 << 96) | (h5 << 64) |(h6 << 32) | h7
     print(f"SHA2-256 hash of \'{m_copy}\' = {hex(hash)[2:]}")
+
+sha2hash("The quick brown fox jumps over the lazy dog")
